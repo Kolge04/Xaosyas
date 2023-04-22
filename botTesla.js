@@ -267,7 +267,7 @@ const OyunHusnuEhedov = (ctx, chatId) => {
 
 
 
-bot.command("xaosgame", (ctx) => {
+bot.action('yas', ctx=>{
 	let message = ctx.update.message
 	if (message.chat.id < 0) {
 		let chatId = message.chat.id
@@ -451,7 +451,15 @@ bot.action('start', ctx=>{
     })
 })
 
-
+bot.oyun(async (ctx) => {
+    await ctx.replyWithMarkdown(ozelMesaj(ctx.update.message.chat.id < 0),{
+        reply_markup:{
+            inline_keyboard:[
+		[{text:'yas', callback_data:'yas'}]
+            ]
+        }
+    })
+})
 
 bot.action('vip', ctx=>{
     ctx.deleteMessage()
